@@ -23,7 +23,7 @@ class Aplikacija:
         self.slikaDugme = Button(self.leviOkvir, text="Odaberite sliku", width=15, height=3, relief="groove", command=self.dodaj_sliku)
         self.slikaDugme.pack(side=TOP, pady=5, padx=10)
 
-        self.sloziDugme = Button(self.leviOkvir, text="Slozite slagalicu", width=15, height=3, relief="groove")
+        self.sloziDugme = Button(self.leviOkvir, text="Slozite slagalicu", width=15, height=3, relief="groove", state="disabled")
         self.sloziDugme.pack(side=TOP, pady=5, padx=10)
 
         self.labela = Label(self.leviOkvir, text="x", borderwidth=2, relief="groove", width=200, height=200)
@@ -44,6 +44,7 @@ class Aplikacija:
 
             self.prikazi_originalnu_sliku()
             self.iseci_sliku()
+            self.sloziDugme["state"] = "active"
 
     def prikazi_originalnu_sliku(self):
 
