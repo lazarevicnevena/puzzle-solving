@@ -13,11 +13,11 @@ root = Tk()
 class Aplikacija:
 
     def __init__(self):
-        self.desniOkvir = Frame(root, width=400, height=300, highlightbackground="red", highlightcolor="red",
+        self.desniOkvir = Frame(root, width=350, height=350, highlightbackground="red", highlightcolor="red",
                            highlightthickness=1, bd=0)
         self.desniOkvir.pack(side=RIGHT, pady=5, padx=5)
 
-        self.leviOkvir = Frame(root, width=200, height=300)
+        self.leviOkvir = Frame(root, width=250, height=350)
         self.leviOkvir.pack(side=LEFT)
 
         self.slikaDugme = Button(self.leviOkvir, text="Odaberite sliku", width=15, height=3, relief="groove", command=self.dodaj_sliku)
@@ -110,7 +110,7 @@ class Aplikacija:
         self.slika1 = ImageTk.PhotoImage(smanjena)
 
         self.labelaSlagalica.destroy()
-        self.labelaSlagalica = Label(self.desniOkvir, image=self.slika1, width=400, height=300)
+        self.labelaSlagalica = Label(self.desniOkvir, image=self.slika1, width=360, height=350)
         self.labelaSlagalica.image = self.slika1
         self.labelaSlagalica.pack()
 
@@ -118,9 +118,9 @@ class Aplikacija:
 if __name__ == '__main__':
 
     root.title("Resavanje slagalice")
-    root.geometry('600x300+400+100')
+    root.geometry('600x350+400+100')
 
-    root.minsize(600,300)
+    root.minsize(600,350)
 
     app = Aplikacija()
 
