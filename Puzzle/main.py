@@ -63,50 +63,39 @@ class Aplikacija:
 
         slika = cv2.imread(novi_fajl)
 
-        smanjena_slika = cv2.resize(slika, (250, 250))
-        puzla = slika[0:50, 0:50]
+        smanjena_slika = cv2.resize(slika, (300, 300))
+        puzla = slika[0:100, 0:100]
         visina = len(puzla)
         puta = visina
 
         sve_slike = []
 
-        for i in range(5):
-            for j in range(5):
+        for i in range(3):
+            for j in range(3):
                 nova_slika = smanjena_slika[i * puta:i * puta + puta, j * puta:j * puta + puta]
                 sve_slike.append(nova_slika)
 
-        vis = np.zeros((max(250, 250), 250), np.float32)
+        vis = np.zeros((max(300, 300), 300), np.float32)
 
         np.random.shuffle(sve_slike)
 
-        vis1 = np.zeros((max(50, 50), 50), np.float32)
-        vis2 = np.zeros((max(50, 50), 50), np.float32)
-        vis3 = np.zeros((max(50, 50), 50), np.float32)
-        vis4 = np.zeros((max(50, 50), 50), np.float32)
-        vis5 = np.zeros((max(50, 50), 50), np.float32)
+        vis1 = np.zeros((max(100, 100), 100), np.float32)
+        vis2 = np.zeros((max(100, 100), 100), np.float32)
+        vis3 = np.zeros((max(100, 100), 100), np.float32)
 
-        vis1 = np.concatenate((sve_slike[0], sve_slike[1], sve_slike[2],
-                               sve_slike[3], sve_slike[4]), axis=0)
+        vis1 = np.concatenate((sve_slike[0], sve_slike[1], sve_slike[2]), axis=0)
 
-        vis2 = np.concatenate((sve_slike[5], sve_slike[6], sve_slike[7],
-                               sve_slike[8], sve_slike[9]), axis=0)
+        vis2 = np.concatenate((sve_slike[3], sve_slike[4], sve_slike[5]), axis=0)
 
-        vis3 = np.concatenate((sve_slike[10], sve_slike[11], sve_slike[12],
-                               sve_slike[13], sve_slike[14]), axis=0)
+        vis3 = np.concatenate((sve_slike[6], sve_slike[7], sve_slike[8]), axis=0)
 
-        vis4 = np.concatenate((sve_slike[15], sve_slike[16], sve_slike[17],
-                               sve_slike[18], sve_slike[19]), axis=0)
-
-        vis5 = np.concatenate((sve_slike[20], sve_slike[21], sve_slike[22],
-                               sve_slike[23], sve_slike[24]), axis=0)
-
-        vis = np.concatenate((vis1, vis2, vis3, vis4, vis5), axis=1)
+        vis = np.concatenate((vis1, vis2, vis3), axis=1)
 
         cv2.imwrite(ispremestana_slagalica, vis)
 
         slika = Image.open(ispremestana_slagalica)
 
-        smanjena = slika.resize((250, 250), Image.ANTIALIAS)
+        smanjena = slika.resize((300, 300), Image.ANTIALIAS)
 
         self.slika1 = ImageTk.PhotoImage(smanjena)
 
